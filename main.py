@@ -53,6 +53,10 @@ def handle_dialog(res, req):
                     'hide': True
                 },
                 {
+                    'title': 'Распространение',
+                    'hide': True
+                },
+                {
                     'title': 'Рекомендации',
                     'hide': True
                 },
@@ -93,6 +97,10 @@ def handle_dialog(res, req):
                             'hide': True
                         },
                         {
+                            'title': 'Распространение',
+                            'hide': True
+                        },
+                        {
                             'title': 'Рекомендации',
                             'hide': True
                         },
@@ -119,6 +127,9 @@ def handle_dialog(res, req):
             elif 'карту' in req['request']['nlu']['tokens']:
                 sessionStorage[user_id]['information'] = True
                 cards(res, req)
+            elif 'распространение' in req['request']['nlu']['tokens']:
+                sessionStorage[user_id]['information'] = True
+                raspr(res, req)
             else:
                 res['response']['text'] = ('К сожалению у меня нет такого раздела. Выберите из перечисленных' +
                                            ' или перейдите на официальный сайт, где такая информация может быть.')
@@ -129,6 +140,10 @@ def handle_dialog(res, req):
                     },
                     {
                         'title': 'Симптомы',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Распространение',
                         'hide': True
                     },
                     {
@@ -170,6 +185,10 @@ def handle_dialog(res, req):
                             'hide': True
                         },
                         {
+                            'title': 'Распространение',
+                            'hide': True
+                        },
+                        {
                             'title': 'Рекомендации',
                             'hide': True
                         },
@@ -194,6 +213,9 @@ def handle_dialog(res, req):
             elif 'карту' in req['request']['nlu']['tokens']:
                 sessionStorage[user_id]['information'] = True
                 cards(res, req)
+            elif 'распространение' in req['request']['nlu']['tokens']:
+                sessionStorage[user_id]['information'] = True
+                raspr(res, req)
 
 
 def symptomes(res, req):
@@ -211,6 +233,10 @@ def symptomes(res, req):
     res['response']['buttons'] = [
         {
             'title': 'Информация про количество заболевших',
+            'hide': True
+        },
+        {
+            'title': 'Распространение',
             'hide': True
         },
         {
@@ -256,6 +282,10 @@ def recomendation(res, req):
             'hide': True
         },
         {
+            'title': 'Распространение',
+            'hide': True
+        },
+        {
             'title': 'Самоизоляция',
             'hide': True
         },
@@ -291,6 +321,10 @@ def stay_home(res, req):
             'hide': True
         },
         {
+            'title': 'Распространение',
+            'hide': True
+        },
+        {
             'title': 'Рекомендации',
             'hide': True
         },
@@ -319,11 +353,48 @@ def cards(res, req):
             'hide': True
         },
         {
+            'title': 'Распространение',
+            'hide': True
+        },
+        {
             'title': 'Рекомендации',
             'hide': True
         },
         {
             'title': 'Самоизоляция',
+            'hide': True
+        }
+    ]
+
+
+def raspr(res, req):
+    user_id = req['session']['user_id']
+    res['response']['text'] = "\n".join(['Короновирус может передаваться:',
+                                             'воздушно-капельным путем (при кашле или чихании)',
+                                             'контактным путем (поручни в транспорте,' +
+                                         ' дверные ручки и другие загрязненные поверхности и предметы)',
+                                         'Как и другие респираторные вирусы, коронавирус распространяется' +
+                                         ' через капли, которые образуются, когда инфицированный человек' +
+                                         ' кашляет или чихает.', 'Кроме того, он может распространяться,' +
+                                         ' когда инфицированный человек касается любой загрязненной поверхности,' +
+                                         ' например, дверной ручки.',
+                                         'Люди заражаются, когда они касаются загрязненными руками рта, носа или глаз.'])
+    sessionStorage[user_id]['information'] = False
+    res['response']['buttons'] = [
+        {
+            'title': 'Информация про количество заболевших',
+            'hide': True
+        },
+        {
+            'title': 'Симптомы',
+            'hide': True
+        },
+        {
+            'title': 'Самоизоляция',
+            'hide': True
+        },
+        {
+            'title': 'Посмотреть карту заражения',
             'hide': True
         }
     ]
