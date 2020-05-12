@@ -96,38 +96,39 @@ def handle_dialog(res, req):
                         # переход на сайт
                         "title": "Перейти на официальный сайт",
                         "url": "https://koronavirustoday.ru/info/koronavirus-tablicza-po-stranam-mira-na-segodnya/",
-                        "hide": True}
+                        "hide": True
+                    }
                 ]
                 # предложение узнать еще что-то, после возвращения к диалогу с сайта
-                if "переходить" in req['request']['nlu']['tokens']:
-                    res['response']['text'] = "Что еще хочешь узнать?"
-                    # создание кнопок на экране
-                    res['response']['buttons'] = [
-                        {
-                            'title': 'Информация про количество заболевших',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Симптомы',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Распространение',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Рекомендации',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Самоизоляция',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Посмотреть карту заражения',
-                            'hide': True
-                        }
-                    ]
+            elif "переходить" in req['request']['nlu']['tokens'] or "перейти" in req['request']['nlu']['tokens']:
+                res['response']['text'] = "Что еще хочешь узнать?"
+                # создание кнопок на экране
+                res['response']['buttons'] = [
+                    {
+                        'title': 'Информация про количество заболевших',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Симптомы',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Распространение',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Рекомендации',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Самоизоляция',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Посмотреть карту заражения',
+                        'hide': True
+                    }
+                ]
             # вызов нужной пользователю функции
             elif 'симптомы' in req['request']['nlu']['tokens']:
                 sessionStorage[user_id]['information'] = True
@@ -199,35 +200,35 @@ def handle_dialog(res, req):
                         "url": "https://koronavirustoday.ru/info/koronavirus-tablicza-po-stranam-mira-na-segodnya/",
                         "hide": True}
                 ]
-                if "переходить" in req['request']['nlu']['tokens']:
-                    res['response']['text'] = "Что еще хочешь узнать?"
-                    # создание кнопок на экране
-                    res['response']['buttons'] = [
-                        {
-                            'title': 'Информация про количество заболевших',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Симптомы',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Распространение',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Рекомендации',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Самоизоляция',
-                            'hide': True
-                        },
-                        {
-                            'title': 'Посмотреть карту заражения',
-                            'hide': True
-                        }
-                    ]
+            elif "переходить" in req['request']['nlu']['tokens'] or "перейти" in req['request']['nlu']['tokens']:
+                res['response']['text'] = "Что еще хочешь узнать?"
+                # создание кнопок на экране
+                res['response']['buttons'] = [
+                    {
+                        'title': 'Информация про количество заболевших',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Симптомы',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Распространение',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Рекомендации',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Самоизоляция',
+                        'hide': True
+                    },
+                    {
+                        'title': 'Посмотреть карту заражения',
+                        'hide': True
+                    }
+                ]
             # вызов нужной пользователю функции
             elif 'симптомы' in req['request']['nlu']['tokens']:
                 sessionStorage[user_id]['information'] = True
